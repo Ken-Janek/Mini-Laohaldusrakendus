@@ -1,4 +1,5 @@
 // Faili eesmärk: kirjeldada kõigi toodete ühiseid andmeid ja toiminguid.
+
 // Abstraktsioon: Product koondab kõigile toodetele ühised andmed ja toimingud.
 // abstract tähendab, et new Product(...) pole lubatud: luua tuleb konkreetse
 // alamklassi objekt, näiteks FoodProduct. Nii saab ladu kasutada ühiseid
