@@ -1,4 +1,5 @@
 // Faili eesmärk: kirjeldada elektroonikatoodet ja anda sellele hoiustamise lisainfo.
+
 // Pärilus: extends Product teeb ElectronicProductist Producti alamklassi.
 // Ühised meetodid, näiteks getName() ja changeQuantity(), tulevad Productist.
 // Private välju kasutame nende meetodite kaudu, mitte otse.
