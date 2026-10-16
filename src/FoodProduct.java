@@ -1,4 +1,5 @@
 // Faili eesmärk: kirjeldada toidutoodet ja anda sellele toidukauba lisainfo.
+
 // Pärilus: extends Product tähendab, et FoodProduct on Producti alamklass.
 // See saab kasutada ühiseid meetodeid, näiteks getName() ja changeQuantity().
 // Producti private väljadele pääseb ligi nende meetodite kaudu, mitte otse.
