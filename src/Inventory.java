@@ -1,4 +1,5 @@
 // Faili eesmärk: hoida toodete loendit, lisada ja otsida tooteid ning arvutada lao koguväärtust.
+
 import java.util.ArrayList;
 import java.util.List;
 
