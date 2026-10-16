@@ -4,6 +4,9 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
+    // Tööjaotus: Main suhtleb kasutajaga, Inventory haldab loendit ning
+    // Product ja selle alamklassid kirjeldavad tooteid. Nii on lihtsam leida,
+    // millises klassis soovitud muudatus teha.
     // Ühine sisendilugeja loeb terminalist UTF-8 teksti.
     private static final Scanner input = new Scanner(System.in, StandardCharsets.UTF_8);
 
@@ -15,7 +18,9 @@ public class Main {
         inventory.addProduct(new FoodProduct("Leib", 2.00, 5));
         inventory.addProduct(new ElectronicProduct("Hiir", 15.00, 2));
 
-        boolean running = true; // true hoiab menüü töös.
+        // boolean hoiab tõeväärtust: true kordab menüüd, false lõpetab tsükli.
+        // See võimaldab väljumist juhtida ühe selge olekumuutujaga.
+        boolean running = true;
         while (running) { // Kordame menüüd kuni väljumiseni.
             System.out.println("\n1 - Kõik tooted\n2 - Lisa toode\n3 - Muuda kogust"
                     + "\n4 - Otsi nime järgi\n5 - Lao koguväärtus\n0 - Välju");
@@ -24,6 +29,10 @@ public class Main {
                 int choice = readInt("Valik: ");
                 switch (choice) { // Valime kasutaja numbrile vastava tegevuse.
                     case 1: // Käime kõik tooted läbi ja kuvame nende kirjelduse.
+                        // Polümorfism: product on Product-tüüpi, kuid tegelik objekt
+                        // võib olla toit või elektroonika. println kasutab toString(),
+                        // mille getExtraInfo() kutse valib õige alamklassi lisainfo.
+                        // Nii pole kuvamiseks vaja iga tooteliigi jaoks eraldi haru.
                         for (Product product : inventory.getProducts()) {
                             System.out.println(product);
                         }
@@ -52,6 +61,7 @@ public class Main {
                         System.out.println("Tundmatu valik.");
                 }
             // Vigane väärtus annab teate; seejärel saab menüüs jätkata.
+            // try/catch väldib programmi lõppemist näiteks arvuks sobimatu teksti puhul.
             } catch (IllegalArgumentException exception) {
                 System.out.println("Viga: " + exception.getMessage());
             // Sisend võib lõppeda ka poole toimingu pealt.
@@ -86,6 +96,8 @@ public class Main {
     }
 
     // Ühine otsingumeetod koguse muutmise ja nimeotsingu jaoks.
+    // Korduvkasutus tähendab, et küsimust ja puuduva toote teadet ei pea
+    // mõlema menüüvaliku juures uuesti kirjutama.
     private static Product findProduct(Inventory inventory) {
         Product product = inventory.findByName(readLine("Toote nimi: "));
         if (product == null) System.out.println("Toodet ei leitud.");

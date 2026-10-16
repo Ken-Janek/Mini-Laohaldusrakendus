@@ -1,11 +1,19 @@
 // Faili eesmärk: kirjeldada kõigi toodete ühiseid andmeid ja toiminguid.
-// Abstraktsioon: ühine tooteklass, millest otse objekti luua ei saa.
+// Abstraktsioon: Product koondab kõigile toodetele ühised andmed ja toimingud.
+// abstract tähendab, et new Product(...) pole lubatud: luua tuleb konkreetse
+// alamklassi objekt, näiteks FoodProduct. Nii saab ladu kasutada ühiseid
+// meetodeid, ilma et peaks teadma iga tooteliigi eripära.
 public abstract class Product {
-    // Kapseldamine: private välju kasutatakse selle klassi meetodite kaudu.
+    // Kapseldamine: private keelab teistel klassidel välju otse lugeda ja muuta.
+    // Lugemiseks on getterid ja koguse muutmiseks kontrolliga changeQuantity().
+    // Nii ei saa muu kood määrata koguseks näiteks -5 ja kontrollist mööda minna.
     // final tähendab, et nimi ja hind pärast loomist ei muutu.
-    private final String name;
+    private final String name; // String hoiab teksti, näiteks "Piim".
+    // double võimaldab komakohaga hinda, näiteks 1.50.
+    // Täpseks rahaarvestuseks sobiks paremini BigDecimal või täisarvulised sendid:
+    // double võib arvutamisel anda väikeseid ümardusvigu.
     private final double price;
-    private int quantity;
+    private int quantity; // int sobib tervete ühikute arvuks, näiteks 10.
 
     // Konstruktor käivitatakse uue toote loomisel.
     public Product(String name, double price, int quantity) {
@@ -29,6 +37,8 @@ public abstract class Product {
     public int getQuantity() { return quantity; }
 
     // Positiivne muutus lisab kaupa, negatiivne võtab seda vähemaks.
+    // Näiteks kogus 4 ja muutus -5 annavad vea; kogus jääb endiselt neljaks.
+    // Kontroll toimub siin, et kõik selle meetodi kasutajad järgiksid sama reeglit.
     public void changeQuantity(int change) {
         // long väldib int-vahetulemuse ületäitumist enne kontrolli.
         long newQuantity = (long) quantity + change;
@@ -42,14 +52,17 @@ public abstract class Product {
     // Selle toote kogu laoväärtus: ühe ühiku hind korda kogus.
     public double getValue() { return price * quantity; }
 
-    // Alamklass peab sellele meetodile oma teostuse andma.
+    // Abstraktne meetod määrab nõude: igal tooteliigil peab olema lisainfo.
+    // Siin puudub meetodi keha, sest täpse teksti määrab iga alamklass ise.
     public abstract String getExtraInfo();
 
     // Asendame Object-klassi toString-meetodi loetava tootekirjeldusega.
     @Override
     public String toString() {
         // %s on tekst, %.2f kahe komakohaga arv ja %d täisarv.
-        // Polümorfism: getExtraInfo teostus valitakse tegeliku tooteliigi järgi.
+        // Polümorfism: sama getExtraInfo() kutse töötab eri tooteliikidega.
+        // Java valib tegeliku objekti järgi FoodProduct või ElectronicProduct
+        // teostuse. Seega pole siin vaja tooteliiki kontrollivaid if-tingimusi.
         return String.format(java.util.Locale.ROOT,
                 "%s | %.2f EUR | kogus: %d | %s", name, price, quantity, getExtraInfo());
     }
