@@ -37,40 +37,13 @@ tootenimi on keelatud. Sobimatu sisendi järel saab menüüs jätkata.
 
 ## Hindamiskriteeriumid ja nende asukohad
 
-| Osa | Kus on see näidatud? |
+| Osa | Kus ja kuidas see lahenduses esineb? |
 | --- | --- |
-| OOP-põhimõtted | Allpool jaotises [Neli OOP põhimõtet](#neli-oop-põhimõtet) on iga põhimõtte koodinäide ja selgitus. |
-| Andmetüübid ja andmestruktuurid | Jaotises [Andmetüübid ja andmestruktuur](#andmetüübid-ja-andmestruktuur) on tüüpide ja ArrayListi valiku põhjendus ning otsingu kirjeldus. |
-| Praktiline programmeerimine | [Main.java](src/Main.java) menüü valikud 1–5 täidavad nõutud toimingud. [Inventory.java](src/Inventory.java) haldab ladu. Tulemust näitab [käivitustõend](#käivitustõend). |
-| Iseseisev oskus | Jaotised [Käivitamine](#käivitamine) ja [Harjutus esitluseks](#harjutus-esitluseks) aitavad valmistuda. Oskust näitad ise programmi käivitades, koodi selgitades ja muudatust tehes. |
-| Töökorraldus | Kaustas [src](src) on viis kommenteeritud klassi. Arenduse järjekorda kirjeldab allpool tööpäevik ning ajalugu jaotis [Commit'id](#commitid). |
-
-## Neli OOP põhimõtet
-
-- **Abstraktsioon:** `Product` kirjeldab kõigile toodetele ühiseid andmeid ja
-  toiminguid. See on abstraktne klass, seega `new Product(...)` pole lubatud.
-  `getExtraInfo()` määrab, et iga konkreetne tooteliik peab oskama lisainfot anda.
-- **Pärilus:** `FoodProduct extends Product` ja `ElectronicProduct extends Product`
-  saavad nime, hinna, koguse ning nende meetodid vanemklassist. Ühist koodi ei pea kordama.
-- **Kapseldamine:** `Product` väljad on `private`. Kogust muudetakse
-  `changeQuantity()` kaudu, mis kontrollib uut väärtust. Nime ja hinda saab lugeda
-  getteritega; need on selles lahenduses loomise järel muutumatud (`final`).
-- **Polümorfism:** `Main` käib läbi `Product` tüüpi tooted ja kuvab need.
-  `Product.toString()` kutsub `getExtraInfo()` meetodit. Java valib tegeliku objekti
-  järgi toidu või elektroonika teostuse, kuigi muutuja tüüp on `Product`.
-
-## Andmetüübid ja andmestruktuur
-
-`String` hoiab nime, `int` täisarvulist kogust, `double` hinda ja koguväärtust ning
-`boolean` menüü töötamise olekut. Õppeülesandes on `double` lihtne valik;
-päris rahaarvestuses tasub kasutada `BigDecimal`-i või täisarvulisi sente.
-
-`Inventory` hoiab tooteid `ArrayList<Product>`-is: väikeses poes on lihtne toode
-`add()` abil lõppu lisada ja `for`-tsükliga kõik tooted läbi käia.
-`findByName()` võrdleb järjest iga toote nime `equalsIgnoreCase()` abil ja tagastab
-esimese vaste või `null`. Otsing on O(n), mis sobib väikese tootehulga jaoks.
-`getProducts()` tagastab loendi koopia, et väljastpoolt ei saaks lao loendist
-tooteid eemaldada. Koopias on endiselt samad tooteobjektid.
+| OOP-põhimõtted | **Pärilus:** [FoodProduct.java](src/FoodProduct.java) ja [ElectronicProduct.java](src/ElectronicProduct.java) kasutavad `extends Product`. **Kapseldamine:** [Product.java](src/Product.java) hoiab välju `private` ning kontrollib koguse muutmist meetodis `changeQuantity()`. **Polümorfism:** `Product.toString()` kutsub `getExtraInfo()` meetodit, mille tulemus sõltub tegelikust alamklassist. **Abstraktsioon:** `Product` on abstraktne klass ja `getExtraInfo()` abstraktne meetod, mille alamklassid peavad teostama. |
+| Andmetüübid ja andmestruktuurid | [Product.java](src/Product.java): `String name` on nimi, `double price` hind ja `int quantity` täisarvuline kogus. [Main.java](src/Main.java): `boolean running` määrab, kas menüü jätkab tööd. [Inventory.java](src/Inventory.java): `ArrayList<Product>` võimaldab tooteid lisada ja tsükliga läbi käia; `findByName()` otsib nime järgi järjest kõikide toodete hulgast. Väikese lao jaoks on see lihtne ja sobiv lahendus. |
+| Praktiline programmeerimine | [Main.java](src/Main.java) meetodi `main()` menüü valikud 1–5 võimaldavad tooteid kuvada, lisada, kogust muuta, nime järgi otsida ja koguväärtust vaadata. Seal luuakse ka kolm algtoodet. [Inventory.java](src/Inventory.java) meetodid `addProduct()`, `findByName()` ja `getTotalValue()` teevad lao toiminguid. Tegeliku näidiskäivituse väljund on failis [kaivitus.txt](evidence/kaivitus.txt). |
+| Iseseisev oskus | Selle README jaotis „Käivitamine” annab kompileerimise ja käivitamise käsud, ülaltoodud OOP-rida selgitab koodi ning „Harjutus esitluseks” pakub väikese muudatuse ülesande. Oskust tuleb ise näidata: käivita programm, selgita valitud koodiridu ja tee õpetaja antud muudatus. |
+| Töökorraldus | Kood on jagatud viide selge ülesandega klassi kaustas [src](src). Failide alguses on eesmärgi selgitused ja koodis eestikeelsed kommentaarid. Selle README tööpäevik kirjeldab arenduse järjekorda ning jaotis „Commit'id” viitab sisulistele arendusetappidele. Kogu ajalugu näeb käsuga `git log --oneline`. |
 
 ## Tööpäevik (AI abil tehtud töö kirjeldus)
 
