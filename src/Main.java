@@ -1,4 +1,5 @@
 // Faili eesmärk: käivitada rakendus, kuvada menüü ja töödelda kasutaja sisestatud valikuid.
+
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.Scanner;
