@@ -35,6 +35,16 @@ $jdkBin = (Get-ChildItem .tools/jdk -Directory | Select-Object -First 1).FullNam
 Hinnas sobib punkt või koma. Negatiivne hind või kogus, tühi nimi ja korduv
 tootenimi on keelatud. Sobimatu sisendi järel saab menüüs jätkata.
 
+## Hindamiskriteeriumid ja nende asukohad
+
+| Osa | Kus ja kuidas see lahenduses esineb? |
+| --- | --- |
+| OOP-põhimõtted | **Pärilus:** [FoodProduct.java](src/FoodProduct.java) ja [ElectronicProduct.java](src/ElectronicProduct.java) kasutavad `extends Product`. **Kapseldamine:** [Product.java](src/Product.java) hoiab välju `private` ning kontrollib koguse muutmist meetodis `changeQuantity()`. **Polümorfism:** `Product.toString()` kutsub `getExtraInfo()` meetodit, mille tulemus sõltub tegelikust alamklassist. **Abstraktsioon:** `Product` on abstraktne klass ja `getExtraInfo()` abstraktne meetod, mille alamklassid peavad teostama. |
+| Andmetüübid ja andmestruktuurid | [Product.java](src/Product.java): `String name` on nimi, `double price` hind ja `int quantity` täisarvuline kogus. [Main.java](src/Main.java): `boolean running` määrab, kas menüü jätkab tööd. [Inventory.java](src/Inventory.java): `ArrayList<Product>` võimaldab tooteid lisada ja tsükliga läbi käia; `findByName()` otsib nime järgi järjest kõikide toodete hulgast. Väikese lao jaoks on see lihtne ja sobiv lahendus. |
+| Praktiline programmeerimine | [Main.java](src/Main.java) meetodi `main()` menüü valikud 1–5 võimaldavad tooteid kuvada, lisada, kogust muuta, nime järgi otsida ja koguväärtust vaadata. Seal luuakse ka kolm algtoodet. [Inventory.java](src/Inventory.java) meetodid `addProduct()`, `findByName()` ja `getTotalValue()` teevad lao toiminguid. Tegeliku näidiskäivituse väljund on failis [kaivitus.txt](evidence/kaivitus.txt). |
+| Iseseisev oskus | Selle README jaotis „Käivitamine” annab kompileerimise ja käivitamise käsud, „Neli OOP põhimõtet” selgitab koodi ning „Harjutus esitluseks” pakub väikese muudatuse ülesande. Oskust tuleb ise näidata: käivita programm, selgita valitud koodiridu ja tee õpetaja antud muudatus. |
+| Töökorraldus | Kood on jagatud viide selge ülesandega klassi kaustas [src](src). Failide alguses on eesmärgi selgitused ja koodis eestikeelsed kommentaarid. Selle README tööpäevik kirjeldab arenduse järjekorda ning jaotis „Commit'id” viitab sisulistele arendusetappidele. Kogu ajalugu näeb käsuga `git log --oneline`. |
+
 ## Neli OOP põhimõtet
 
 - **Abstraktsioon:** `Product` kirjeldab kõigile toodetele ühiseid andmeid ja
