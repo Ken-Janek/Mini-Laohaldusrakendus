@@ -1,0 +1,66 @@
+
+1 - Kõik tooted
+2 - Lisa toode
+3 - Muuda kogust
+4 - Otsi nime järgi
+5 - Lao koguväärtus
+0 - Välju
+Valik: Piim | 1.50 EUR | kogus: 10 | Toidukaup: kontrolli säilivusaega
+Leib | 2.00 EUR | kogus: 5 | Toidukaup: kontrolli säilivusaega
+Hiir | 15.00 EUR | kogus: 2 | Elektroonika: hoia kuivas
+
+1 - Kõik tooted
+2 - Lisa toode
+3 - Muuda kogust
+4 - Otsi nime järgi
+5 - Lao koguväärtus
+0 - Välju
+Valik: Liik (1 - toit, 2 - elektroonika): Nimi: Hind: Kogus: Lisatud: Juust | 3.50 EUR | kogus: 4 | Toidukaup: kontrolli säilivusaega
+
+1 - Kõik tooted
+2 - Lisa toode
+3 - Muuda kogust
+4 - Otsi nime järgi
+5 - Lao koguväärtus
+0 - Välju
+Valik: Toote nimi: Juust | 3.50 EUR | kogus: 4 | Toidukaup: kontrolli säilivusaega
+
+1 - Kõik tooted
+2 - Lisa toode
+3 - Muuda kogust
+4 - Otsi nime järgi
+5 - Lao koguväärtus
+0 - Välju
+Valik: Lao koguväärtus: 69.00 EUR
+
+1 - Kõik tooted
+2 - Lisa toode
+3 - Muuda kogust
+4 - Otsi nime järgi
+5 - Lao koguväärtus
+0 - Välju
+Valik: Toote nimi: Koguse muutus (nt 3 või -2): Viga: Uus kogus peab jääma vahemikku 0 kuni 2147483647
+
+1 - Kõik tooted
+2 - Lisa toode
+3 - Muuda kogust
+4 - Otsi nime järgi
+5 - Lao koguväärtus
+0 - Välju
+Valik: Toote nimi: Koguse muutus (nt 3 või -2): Juust | 3.50 EUR | kogus: 3 | Toidukaup: kontrolli säilivusaega
+
+1 - Kõik tooted
+2 - Lisa toode
+3 - Muuda kogust
+4 - Otsi nime järgi
+5 - Lao koguväärtus
+0 - Välju
+Valik: Lao koguväärtus: 65.50 EUR
+
+1 - Kõik tooted
+2 - Lisa toode
+3 - Muuda kogust
+4 - Otsi nime järgi
+5 - Lao koguväärtus
+0 - Välju
+Valik: Head aega!
