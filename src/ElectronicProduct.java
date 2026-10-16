@@ -1,3 +1,4 @@
+// Faili eesmärk: kirjeldada elektroonikatoodet ja anda sellele hoiustamise lisainfo.
 // Pärilus: elektroonikatoode kasutab Product-klassi ühist loogikat.
 public class ElectronicProduct extends Product {
     public ElectronicProduct(String name, double price, int quantity) {

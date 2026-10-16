@@ -1,3 +1,4 @@
+// Faili eesmärk: kirjeldada toidutoodet ja anda sellele toidukauba lisainfo.
 // Pärilus: toidutoode saab Product-klassi väljad ja ühised meetodid.
 public class FoodProduct extends Product {
     public FoodProduct(String name, double price, int quantity) {

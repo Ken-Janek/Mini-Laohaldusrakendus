@@ -1,3 +1,4 @@
+// Faili eesmärk: kirjeldada kõigi toodete ühiseid andmeid ja toiminguid.
 // Abstraktsioon: ühine tooteklass, millest otse objekti luua ei saa.
 public abstract class Product {
     // Kapseldamine: private välju kasutatakse selle klassi meetodite kaudu.
